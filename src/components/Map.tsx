@@ -27,10 +27,9 @@ const containerStyle = {
 function MyMap({ markers, setMarkers, selectedLocation }: MyMapProps) {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: "AIzaSyAh5TQPz1aim5fC4rkNamxaxKLsP5sFzqA",
+    googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAP_KEY,
   });
 
-  const [map, setMap] = useState<google.maps.Map | null>(null);
   const [infoWindowPosition, setInfoWindowPosition] =
     useState<MarkerType | null>(null);
 
@@ -41,11 +40,6 @@ function MyMap({ markers, setMarkers, selectedLocation }: MyMapProps) {
     };
     const bounds = new window.google.maps.LatLngBounds(center);
     map.fitBounds(bounds);
-    setMap(map);
-  }, []);
-
-  const onUnmount = React.useCallback(function callback(map: google.maps.Map) {
-    setMap(null);
   }, []);
 
   const handleMapClick = (event: google.maps.MapMouseEvent) => {
@@ -80,7 +74,6 @@ function MyMap({ markers, setMarkers, selectedLocation }: MyMapProps) {
       center={selectedLocation}
       zoom={15}
       onLoad={onLoad}
-      onUnmount={onUnmount}
       onClick={handleMapClick}
     >
       {infoWindowPosition && (
