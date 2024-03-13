@@ -3,24 +3,20 @@ import "./App.css";
 
 import Sidebar from "./components/Sidebar";
 import MyMap from "./components/Map";
+import { LatLngLiteral } from "leaflet";
 
-interface location {
+interface LocationInterface {
   lat: number;
   lng: number;
   address?: string;
 }
 
-type Location = {
-  lat: string;
-  lng: string;
-};
-
 function App() {
-  const [markers, setMarkers] = useState<location[]>([]);
+  const [markers, setMarkers] = useState<LocationInterface[]>([]);
 
-  const [selectedLocation, setSelectedLocation] = useState<Location>({
-    lat: "",
-    lng: "",
+  const [selectedLocation, setSelectedLocation] = useState<LatLngLiteral>({
+    lat: 0,
+    lng: 0,
   });
 
   return (

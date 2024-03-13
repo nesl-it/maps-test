@@ -5,6 +5,7 @@ import {
   InfoWindow,
   Marker,
 } from "@react-google-maps/api";
+import { LatLngLiteral } from "leaflet";
 
 interface MarkerType {
   lat: number;
@@ -15,7 +16,7 @@ interface MarkerType {
 interface MyMapProps {
   markers: MarkerType[];
   setMarkers: React.Dispatch<React.SetStateAction<MarkerType[]>>;
-  selectedLocation: any;
+  selectedLocation: LatLngLiteral;
 }
 
 const containerStyle = {

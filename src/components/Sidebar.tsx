@@ -6,9 +6,14 @@ interface Marker {
   address?: string;
 }
 
+type Location = {
+  lat: number;
+  lng: number;
+};
+
 interface SidebarProps {
   markers: Marker[];
-  setSelectedLocation: any;
+  setSelectedLocation: React.Dispatch<React.SetStateAction<Location>>;
   setMarkers: React.Dispatch<React.SetStateAction<Marker[]>>;
 }
 
