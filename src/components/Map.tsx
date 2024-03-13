@@ -56,7 +56,6 @@ function MyMap({ markers, setMarkers, selectedLocation }: MyMapProps) {
             lng: clickedLng,
             address: results[0].formatted_address,
           });
-        } else {
         }
       });
     }
